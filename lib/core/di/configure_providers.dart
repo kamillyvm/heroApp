@@ -28,7 +28,7 @@ class ConfigureProviders {
 
     // Network
     final apiClient = ApiClient(
-      baseUrl: 'http://192.168.0.107:3000',
+      baseUrl: 'https://heroapp-bgxv.onrender.com',
     );
 
     // Repository
