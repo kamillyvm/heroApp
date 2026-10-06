@@ -28,17 +28,14 @@ class HeroRepositoryImpl implements HeroRepository {
     required int limit,
   }) async {
     try {
-      // Try network first
       final dtos = await apiClient.getHeroes(page: page, limit: limit);
       final heroes = networkMapper.fromDtoList(dtos);
 
-      // Save to cache
       final entities = heroes.map(databaseMapper.toHeroEntity).toList();
       await heroDao.insertHeroes(entities);
 
       return heroes;
     } catch (_) {
-      // Fallback to local cache
       final entities = await heroDao.getHeroes(page: page, limit: limit);
       if (entities.isEmpty && page == 1) {
         rethrow;

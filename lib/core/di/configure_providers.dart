@@ -15,23 +15,18 @@ class ConfigureProviders {
   ConfigureProviders({required this.providers});
 
   static Future<ConfigureProviders> createDependencyTree() async {
-    // Database
     final appDatabase = AppDatabase();
 
-    // DAOs
     final heroDao = HeroDao(appDatabase);
     final squadDao = SquadDao(appDatabase);
 
-    // Mappers
     final networkMapper = NetworkMapper();
     final databaseMapper = DatabaseMapper();
 
-    // Network
     final apiClient = ApiClient(
       baseUrl: 'https://heroapp-bgxv.onrender.com',
     );
 
-    // Repository
     final heroRepository = HeroRepositoryImpl(
       apiClient: apiClient,
       networkMapper: networkMapper,

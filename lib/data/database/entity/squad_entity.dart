@@ -8,7 +8,7 @@ class SquadEntity {
   final int durability;
   final int power;
   final int combat;
-  final int recruitedAt; // timestamp
+  final int recruitedAt;
 
   const SquadEntity({
     required this.heroId,
